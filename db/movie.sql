@@ -1,9 +1,9 @@
-CREATE DATABASE movie_library;
+CREATE DATABASE user_library;
 CREATE TABLE public.movie(
     id SERIAL NOT NULL PRIMARY KEY,
     title VARCHAR(100) NOT NULL UNIQUE,
     genre VARCHAR(100) NOT NULL,
-    release_date DATETIME,
+    release_date DATE,
     format VARCHAR(100) NOT NULL,
     parent_company VARCHAR(100)
 );
@@ -13,7 +13,7 @@ CREATE TABLE public.book(
     title VARCHAR(100) NOT NULL UNIQUE,
     author VARCHAR(100) NOT NULL,
     genre VARCHAR(100) NOT NULL,
-    release_date DATETIME,
+    release_date DATE,
 );
 
 CREATE TABLE public.user(
@@ -21,7 +21,7 @@ CREATE TABLE public.user(
     username VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL,
     movie_checked_out INT REFERENCES public.movie(id),
-    movie_date_checked_out DATETIME,
+    movie_date_checked_out DATE,
     book_checked_out INT REFERENCES public.book(id),
-    book_data_checked_out DATETIME,
+    book_data_checked_out DATE
 );
