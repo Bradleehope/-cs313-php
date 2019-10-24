@@ -14,10 +14,9 @@
 </div>
 
 <div class="navbar">
-  <a href="/library/login.php">Log In</a>
+  <a href="/homepage.php">Home</a>
   <a href="/library/displayAll.php">See All</a>
   <a href="/library/searchBooks.php">Search Books</a>
-  <a href="/library/searchMovies.php">Search Movies</a>
-  <a href="/library/checkout.php">Check Out</a>
+  <a href="/library/return.php">Return</a>
 </div>
 

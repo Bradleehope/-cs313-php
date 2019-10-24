@@ -1,25 +1,25 @@
 <?php include('nav.php');?>
 <div class="row">
   <div class="side">
-  <h3>Book to be checked out:</h3>
-	<?php
-	session_start();
-
-	echo $_SESSION['book_title'];
-
-	?>
-
+  <h3>New book form:</h3>
   </div>
 <?php
         session_start();
-        $_SESSION['user_name'] = "";
+	$_SESSION['title'];
+	$_SESSION['author'];
+	$_SESSION['genre'];
+	$_SESSION['release_date'];
+
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
-                if(empty($_POST["user_name"])){
+                if(empty($_POST["title"])){
                         echo 'Enter name';
                 }
                 else{
-                        $_SESSION['user_name'] = form_input($_POST['user_name']);
+                        $_SESSION['title'] = form_input($_POST['title']);
+			$_SESSION['author'] = form_input($_POST['author']);
+			$_SESSION['genre'] = form_input($_POST['genre']);
+			$_SESSION['release_date'] = form_input($_POST['release_date']);
                 }
         }
         function form_input($data){
@@ -28,10 +28,12 @@
 ?>
 
 <div class="main">
-	<h2> Check out here</h2>
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        Name: <input type="text" name="user_name" value="<?php echo $user_name;?>"><br>
-        <input type="submit" id="btnOrange" name="submit" value="Checkout">
+        Book Title: <input type="text" name="title" value="<?php echo $title;?>"><br>
+        Author: <input type="text" name="author" value="<?php echo $author;?>"><br>
+        Genre: <input type="text" name="genre" value="<?php echo $genre;?>"><br>
+        Release Date: <input type="text" name="release_date" value="<?php echo $release_date;?>"><br>
+        <input type="submit" id="btnOrange" name="submit" value="Add">
         </form>
 
  </div>
@@ -52,9 +54,9 @@ try
 
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        if($db->query("UPDATE book set checkout_user =('".$_POST["user_name"]."'), availability='no' where title=('".$_SESSION['book_title']."')") === TRUE)
+        if($db->query("INSERT INTO book (title, author, genre, release_date, availability) values ('".$_POST["title"]."', '".$_POST["author"]."', '".$_POST["genre"]."', '".$_POST["release_date"]."', 'yes')") === TRUE)
         {
-              echo 'Thank you ' . $_POST['user_name'];
+              echo 'Thank you ' . $_POST['title'];
 	}
 }
 

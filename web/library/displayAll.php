@@ -1,7 +1,7 @@
 <?php include('nav.php');?>
 <div class="row">
-  <div class="side">
 	<h3>All books currently in stock:</h3>
+<br>
 <?php
 try
 {
@@ -19,8 +19,9 @@ try
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-	foreach ($db->query('SELECT * from book') as $row)
+	foreach ($db->query("SELECT * from book where availability ='yes'") as $row)
 	{
+		echo '<br>';	
 		echo $row['title'];
 		echo ' by ' . $row['author'];
 		echo '<br>';
@@ -32,9 +33,13 @@ catch(PDOException $ex)
 	die();
 }
 ?>
-</div>
 <div class="side">
-	<h3>All movies currently in stock:</h3>
+
+</div>
+
+</div>     
+  <div class="main">	
+<h3>All books NOT currently in stock:</h3>
 <?php
 try
 {
@@ -52,10 +57,12 @@ try
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-	foreach ($db->query('SELECT * from movie') as $row)
+	foreach ($db->query("SELECT * from book where availability ='no'") as $row)
 	{
+	
 		echo $row['title'];
-		echo ' on ' . $row['format']; 
+		echo ' by ' . $row['author'];
+		echo ' checked out by ' . $row['checkout_user'];
 		echo '<br>';
 	}
 }
@@ -65,11 +72,9 @@ catch(PDOException $ex)
 	die();
 }
 ?>
-</div>
 
-</div>     
-  <div class="main">
-    <h2></h2>
+   <br>
+    <a class="checkoutLink"href="/library/addBook.php">Add New Book</a>
     <br>
   </div>
 </div>

@@ -55,6 +55,12 @@ body {
   color: white;
 }
 
+.checkoutLink {
+  color: #FF6347;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+
+}
+
 /* Column container */
 .row {  
   display: -ms-flexbox; /* IE10 */
