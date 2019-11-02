@@ -1,41 +1,31 @@
 <?php include('nav.php');?>
-<div class="row">
-  <div class="side">
   <h3>Book to be checked out:</h3>
 	<?php
-	session_start();
-
+        session_start();
 	echo $_SESSION['book_title'];
 
 	?>
-
-  </div>
 <?php
         session_start();
-        $_SESSION['user_name'] = "";
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
                 if(empty($_POST["user_name"])){
                         echo 'Enter name';
                 }
                 else{
-                        $_SESSION['user_name'] = form_input($_POST['user_name']);
+                        $_SESSION['username'] = form_input($_POST['user_name']);
+                        echo '<a href="/library/confirmation.php" style="color:orange;">Confirm?</a>';
                 }
         }
         function form_input($data){
                 return $data;
         }
 ?>
-
-<div class="main">
-	<h2> Check out here</h2>
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        Name: <input type="text" name="user_name" value="<?php echo $user_name;?>"><br>
+        Name: <input type="text" name="user_name" value="<?php echo $username;?>"><br>
         <input type="submit" id="btnOrange" name="submit" value="Checkout">
         </form>
 
- </div>
-</div>
 <?php
 try
 {

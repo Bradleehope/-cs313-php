@@ -2,7 +2,7 @@
 <div class="row">
   <div class="side">
 	<h2>Search to see all the books currently in stock</h2>
-<?php 
+<?php
 	session_start();
 	$_SESSION['book_title'] = "";
 	if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -22,7 +22,7 @@
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 	Title: <input type="text" name="book_title" value="<?php echo $book_title;?>"><br>
-	<input type="submit" id="btnOrange" name="submit" value="Submit">  
+	<input type="submit" id="btnOrange" name="submit" value="Submit">
 	</form>
   </div>
 </div>

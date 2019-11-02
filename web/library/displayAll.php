@@ -21,9 +21,9 @@ try
 
 	foreach ($db->query("SELECT * from book where availability ='yes'") as $row)
 	{
-		echo '<br>';	
-		echo $row['title'];
+		echo  $row['title'];
 		echo ' by ' . $row['author'];
+		echo '<br>';
 		echo '<br>';
 	}
 }
@@ -34,11 +34,6 @@ catch(PDOException $ex)
 }
 ?>
 <div class="side">
-
-</div>
-
-</div>     
-  <div class="main">	
 <h3>All books NOT currently in stock:</h3>
 <?php
 try
@@ -72,6 +67,11 @@ catch(PDOException $ex)
 	die();
 }
 ?>
+
+</div>
+
+</div>     
+  <div class="main">	
 
    <br>
     <a class="checkoutLink"href="/library/addBook.php">Add New Book</a>
