@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Birthday Display</title>
+	<script src="birthday-client.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<style>
+</style>
+<body>
+        <h1 style="color:purple; text-align:center;">Birthday Reminder</h1>
+        <input type="text" id="monthInput" name="month">
+        <button onclick="searchByMonth()">Search by Month</button>
+	
+	<input type="text" id="nameInput" name="name">
+        <button onclick="searchByName()">Search by Name</button>
+        <div id="birthdayResults">
+                <h2> Birthdays:</h2><h2 id='monthDisplay'></h2>
+                <ul id="results">
+                </ul>
+</body>
+</html>
+
